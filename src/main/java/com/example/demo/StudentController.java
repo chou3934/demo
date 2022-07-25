@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.tester.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

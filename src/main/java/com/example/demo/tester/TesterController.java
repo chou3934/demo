@@ -1,5 +1,6 @@
 package com.example.demo.tester;
 
+import com.example.demo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,15 +14,37 @@ import java.util.Map;
 @RestController
 public class TesterController {
 
+
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private UserRepository userRepository;
+
 
     @GetMapping("/users/{userId}")
+    public User read(@PathVariable Integer userId){
+
+        User user =userRepository.findById(userId).orElse(null);
+
+        return user;
+    }
+
+
+
+
+
+
+    //@Autowired
+    //private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+
+
+    /*@GetMapping("/users/{userId}")
     public User search(@PathVariable Integer userId){
 
+        String sql="SELECT id, name, cityName " +
+                "FROM student LEFT JOIN city " +
+                "ON student.city=city.cityId";
 
-
-        String sql= "SELECT id,name,cityName,code FROM mixed WHERE id= :userId";
+        //String sql= "SELECT id,name,cityName,code FROM mixed WHERE id= :userId";
 
         Map<String,Object> map=new HashMap<>();
         map.put("userId",userId);
@@ -34,5 +57,5 @@ public class TesterController {
             return null;
         }
 
-    }
+    }*/
 }

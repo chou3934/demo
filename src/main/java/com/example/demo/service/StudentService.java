@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.tester.Student;
+import com.example.demo.Student;
 
 public interface StudentService {
 

@@ -1,10 +1,16 @@
 package com.example.demo.tester;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name="mixed")
+@Table(name = "student")
 public class User {
 
     @Id
@@ -16,12 +22,27 @@ public class User {
     String name;
 
 
-    @Column(name = "cityName")
-    String cityName;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "city")
+    private City city;
 
-    @Column(name = "code")
-    String code;
 
+    public User() {
+
+    }
+    public User(String name,City city){
+        this.name=name;
+        this.city=city;
+    }
+
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 
     public Integer getId() {
         return id;
@@ -39,21 +60,5 @@ public class User {
         this.name = name;
     }
 
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 
 }

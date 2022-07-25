@@ -1,6 +1,6 @@
 package com.example.demo.dao;
 
-import com.example.demo.tester.Student;
+import com.example.demo.Student;
 import com.example.demo.StudentRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
