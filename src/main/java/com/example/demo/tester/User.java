@@ -9,40 +9,14 @@ import org.hibernate.annotations.NotFoundAction;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "student")
+
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+
     private Integer id;
+    private String name;
+    private List<City> cityList;
 
-    @Column(name="name")
-    String name;
-
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "city")
-    private City city;
-
-
-    public User() {
-
-    }
-    public User(String name,City city){
-        this.name=name;
-        this.city=city;
-    }
-
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
 
     public Integer getId() {
         return id;
@@ -61,4 +35,11 @@ public class User {
     }
 
 
+    public List<City> getCityList() {
+        return cityList;
+    }
+
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
+    }
 }

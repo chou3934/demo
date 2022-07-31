@@ -7,32 +7,13 @@ import com.sun.xml.bind.v2.TODO;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table
+
 public class City {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="cityId")
+
     Integer cityId;
-
-    @Column(name = "cityName")
     String cityName;
-
-    @Column(name="code")
     String code;
-
-
-    @OneToOne(mappedBy = "city")
-    private User user;
-
-    public City(){
-
-    }
-
-    public City(Integer cityId){
-        this.cityId=cityId;
-    }
 
 
     public Integer getCityId() {
